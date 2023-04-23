@@ -1,5 +1,5 @@
-import Hotel_Model from "../Models/Hotel_Model.js";
-import Rooms_Model from "../Models/Rooms_Model.js";
+import Hotel_Model from '../Models/Hotel_Model.js';
+import Rooms_Model from '../Models/Rooms_Model.js';
 
 // CREATE ROOM
 export const CreateRoom = async (req, res, next) => {
@@ -39,14 +39,14 @@ export const UpdateRoom = async (req, res, next) => {
 export const UpdateRoomAvailability = async (req, res, next) => {
   try {
     await Rooms_Model.updateOne(
-      { "roomNumbers._id": req.params.id },
+      { 'roomNumbers._id': req.params.id },
       {
         $push: {
-          "roomNumbers.$.unavailableDates": req.body.dates,
+          'roomNumbers.$.unavailableDates': req.body.dates,
         },
       }
     );
-    res.status(200).json("Room status has been updated.");
+    res.status(200).json('Room status has been updated.');
   } catch (err) {
     next(err);
   }
@@ -64,7 +64,7 @@ export const deleteRoom = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-    res.status(200).json("Room has been deleted.");
+    res.status(200).json('Room has been deleted.');
   } catch (err) {
     next(err);
   }
